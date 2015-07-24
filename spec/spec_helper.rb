@@ -17,6 +17,10 @@ Mail.defaults { delivery_method :test }
 # load seed data
 load "#{Rails.root}/db/seeds.rb"
 
+# load rake tasks (for tests in spec/lib/tasks)
+require 'rake'
+Accounts::Application.load_tasks
+
 Capybara.javascript_driver = :poltergeist
 
 # Requires supporting ruby files with custom matchers and macros, etc,
