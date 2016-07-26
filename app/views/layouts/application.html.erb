@@ -19,7 +19,15 @@
     <script src="https://cdn.optimizely.com/js/1345615444.js"></script>
 
     <title><%= @page_title + ' - ' if !@page_title.nil? %><%= PAGE_TITLE_SUFFIX %></title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%# We include only the locale the site was requested in to ensure that L20n
+      # will not re-render parts of website when user changes their browser
+      # language.
+      #%>
+    <meta name="defaultLanguage" content="<%= I18n.locale %>">
+    <meta name="availableLanguages" content="<%= I18n.locale %>">
+    <link rel="localization" href="<%= path_to_asset "{locale}.ftl"%>">
   </head>
 
   <body>

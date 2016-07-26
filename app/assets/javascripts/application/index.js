@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require l20n
 //= require ./jquery_extensions
 //= require ./ui
 //= require ./remote-access-helpers
