@@ -101,6 +101,20 @@ pl:
         Zaznacz pole „Publiczny”, jeżeli chcesz, aby inni użytkownicy %{site_name}
         mogli Cię znaleźć używając tego adresu e-mail.
       click_to_verify: Kliknij, aby zweryfikować e-mail.
+      delete_way_to_login:
+        cancel: Anuluj
+        confirm: OK
+        message: >-
+          Czy na pewno usunąć metodę logowania?
+      email_entry:
+        cancel: Anuluj
+        confirm: OK
+        title_last: Czy na pewno?
+        message: >-
+          Czy na pewno usunąć powiązanie tego adresu e-mail z Twoim kontem?
+        message_last: >-
+          Jeżeli usuniesz ten adres e-mail, nie będziemy mogli Ci pomóc, jeżeli
+          utracisz dostęp do swojego konta.
       password: Hasło
       searchable: Publiczny
 
@@ -316,11 +330,20 @@ pl:
 
   users:
     edit:
+      alert_close: Zamknij
       add_email_address: Dodaj nowy adres
+      cancel: Anuluj
+      confirm: OK
+      confirm_password: Powtórz hasło
       email_addresses: Adresy e-mail
       enable_other_sign_in_options: Włącz dodatkowe metody logowania
+      first_name: Imię
       how_you_sign_in_html: Jak się<br class="wide"> logujesz
+      last_name: Nazwisko
       name: Imię
       other_sign_in_options_html: Dodatkowe metody<br class="wide"> logowania
+      password: Hasło
+      suffix: Sufiks
+      title: Tytuł
       username: Nazwa użytkownika
       page_heading: Twój profil

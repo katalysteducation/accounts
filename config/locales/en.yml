@@ -102,6 +102,19 @@ en:
         Check the Searchable box if you want other OpenStax users to find you
         using this email address.
       click_to_verify: Click to verify
+      delete_way_to_login:
+        cancel: Cancel
+        confirm: OK
+        message: Are you sure you want to remove this sign in option?
+      email_entry:
+        cancel: Cancel
+        confirm: OK
+        title_last: Are you sure?
+        message: >-
+          Are you sure you want to remove this email address from your account?
+        message_last: >-
+          If you remove this address from your account, we will be unable to
+          help you access your account if you can’t sign in.
       password: Password
       searchable: Searchable
 
@@ -338,11 +351,20 @@ en:
 
   users:
     edit:
+      alert_close: Close
       add_email_address: Add an email
+      cancel: Cancel
+      confirm: OK
+      confirm_password: Confirm Password
       email_addresses: Emails
       enable_other_sign_in_options: Enable other sign in options
+      first_name: First Name
       how_you_sign_in_html: How you<br class="wide"> sign in
+      last_name: Last Name
       name: Name
       other_sign_in_options_html: Other sign in<br class="wide"> options
       page_heading: Your Account
+      password: Password
+      suffix: Suffix
+      title: Title
       username: Username

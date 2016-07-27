@@ -56,14 +56,7 @@ class Email
       this.$el.find('.searchable').prop('checked', contact.is_searchable)
 
   confirmDelete: (ev) ->
-    [title, message] = if this.$el.siblings('.email-entry').length is 0 # we're the only one
-      ["Are you sure?",
-      "If you remove this address from your account, we will be unable to help you access your account if you can’t sign in."]
-    else
-      [false, "Are you sure you want to remove this email address from your account?"]
     new OX.ConfirmationPopover(
-      title: title
-      message: message
       target: ev.target
       placement: 'top'
       onConfirm: @delete

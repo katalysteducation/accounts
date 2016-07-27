@@ -1,6 +1,20 @@
 <% @parent_col_id = "profile" %>
 
 <% content_for :head do %>
+  <script type="text/javascript">
+    passwordInputsDefaultTemplate =
+      '<input type="password" name="password" class="form-control input-sm" placeholder="<%= t :".password" %>">' +
+      '<input type="password" name="password_confirmation" class="form-control input-sm" placeholder="<%= t :".confirm_password" %>">';
+    profileNameDefaultTemplate =
+      '<div><input type="text" name="title" class="form-control input-sm" placeholder="<%= t :".title" %>"></div>' +
+      '<div><input type="text" name="first_name" class="form-control input-sm" placeholder="<%= t :".first_name" %>"></div>' +
+      '<div><input type="text" name="last_name" class="form-control input-sm" placeholder="<%= t :".last_name" %>"></div>' +
+      '<div><input type="text" name="suffix" class="form-control input-sm" placeholder="<%= t :".suffix" %>"></div>'
+    confirmationPopoverDefaultCancelText = "<%= t :".cancel" %>";
+    confirmationPopoverDefaultConfirmText = "<%= t :".confirm" %>";
+    alertCloseAriaLabel = "<%= t :".alert_close" %>";
+  </script>
+
   <%= javascript_include_tag  "profile" %>
 <% end %>
 
@@ -32,8 +46,9 @@
     <%= email_entry(value: "", id: "", is_verified: false, is_searchable: "") %>
   </div>
   <div class="col-sm-10 info">
-    <% current_user.email_addresses.order(:created_at).each do |email| %>
-      <%= email_entry(value: email.value, id: email.id, is_verified: email.verified, is_searchable: email.is_searchable) %>
+    <% addresses = current_user.email_addresses.order(:created_at) %>
+    <% addresses.each do |email| %>
+      <%= email_entry(value: email.value, id: email.id, is_verified: email.verified, is_searchable: email.is_searchable, last: 1 == addresses.size) %>
     <% end %>
     <%= link_to (t :".add_email_address"), '#', {id: 'add-an-email'} %>
   </div>

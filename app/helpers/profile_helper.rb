@@ -20,6 +20,13 @@ module ProfileHelper
       'glyphicon-pencil edit', 'glyphicon-trash delete', 'glyphicon-plus add',
     ]
 
+    mods = icons.map do |icon|
+      "<span class='glyphicon #{icon} mod'
+        #{if icon.end_with? 'delete'
+            "data-message='#{t :"helpers.profile.delete_way_to_login.message"}'"
+          end}></span>"
+    end.join
+
     snippet = <<-SNIPPET
       <span class="icon fa-stack fa-lg">
         <i class="fa fa-square fa-stack-2x #{provider}-bkg"></i>
@@ -27,14 +34,14 @@ module ProfileHelper
       </span>
       <span class="name">#{display_name}</span>
       <span class="mod-holder">
-      #{icons.map{|icon| "<span class='glyphicon #{icon} mod'></span>"}.join}
+      #{mods}
       </span>
     SNIPPET
 
-    "<div class='authentication' data-provider='#{provider}'>#{snippet}</div>".html_safe
+    "<div class='authentication' data-provider='#{provider}' data-name='#{display_name}'>#{snippet}</div>".html_safe
   end
 
-  def email_entry(value:, id:, is_verified:, is_searchable:)
+  def email_entry(value:, id:, is_verified:, is_searchable:, last:false)
     verify_link = is_verified ? '' : "<span class='verify'>(#{button_to((I18n.t :"helpers.profile.click_to_verify"), resend_confirmation_contact_info_path(id), method: :put ) })</span>"
     (
       <<-SNIPPET
@@ -42,7 +49,15 @@ module ProfileHelper
           <span class="email">#{value}</span>
           #{verify_link}
           <span class="mod-holder">
-            <span class="glyphicon glyphicon-trash mod delete"></span>
+            <span class="glyphicon glyphicon-trash mod delete"
+                  title="#{t :"helpers.profile.email_entry.title_last" if last}"
+                  data-message="#{
+                    if last
+                      t :"helpers.profile.email_entry.message_last"
+                    else
+                      t :"helpers.profile.email_entry.message"
+                    end
+                  }"></span>
           </span>
           <div class="properties">
             <input type="checkbox" class='searchable' #{'checked="IS_SEARCHABLE"' if is_searchable}> #{I18n.t :"helpers.profile.searchable"}
