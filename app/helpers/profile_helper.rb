@@ -31,7 +31,7 @@ module ProfileHelper
       </span>
     SNIPPET
 
-    "<div class='authentication' data-provider='#{provider}'>#{snippet}</div>".html_safe
+    "<div class='authentication' data-provider='#{provider}' data-name='#{display_name}'>#{snippet}</div>".html_safe
   end
 
   def email_entry(value:, id:, is_verified:, is_searchable:)
@@ -42,7 +42,7 @@ module ProfileHelper
           <span class="email">#{value}</span>
           #{verify_link}
           <span class="mod-holder">
-            <span class="glyphicon glyphicon-trash mod delete"></span>
+            <span class="glyphicon glyphicon-trash mod delete" data-l10n-id="profile-email-confirmDelete-title"></span>
           </span>
           <div class="properties">
             <input type="checkbox" class='searchable' #{'checked="IS_SEARCHABLE"' if is_searchable}> #{I18n.t :"helpers.profile.searchable"}

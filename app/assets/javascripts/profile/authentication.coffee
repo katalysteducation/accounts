@@ -3,8 +3,8 @@ class PasswordInputs
   @defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults,
     inputclass: ''
     tpl: '''
-      <input type="password" name="password" class="form-control input-sm" placeholder="Password">
-      <input type="password" name="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+      <input type="password" name="password" class="form-control input-sm" data-l10n-id="profile-authentication-password">
+      <input type="password" name="password_confirmation" class="form-control input-sm" data-l10n-id="profile-authentication-confirm-password">
     '''
   )
 
@@ -44,7 +44,7 @@ class Identity
   confirmDelete: (ev) ->
     new OX.ConfirmationPopover(
       title: false
-      message: "Are you sure you want to remove this sign in option?"
+      message: 'profile-authentication-confirmDelete-message'
       target: ev.target
       placement: 'top'
       onConfirm: @delete
@@ -91,6 +91,7 @@ class Password extends Identity
 
   editPassword: ->
     identity = this.$el.addClass('editing')
+    displayName = @el.dataset.name
     input = identity.find('.name')
     input.text('')
     OX.Alert.hideAll()
@@ -101,7 +102,7 @@ class Password extends Identity
     ).on('hidden', (e, reason) ->
       input.editable('destroy')
       input.attr('style', '') # editable calls hide() which sets 'display:block'
-      input.text('Password')
+      input.text(displayName)
       identity.removeClass('editing')
 
     ).on('save', (e, params) =>

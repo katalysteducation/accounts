@@ -57,10 +57,9 @@ class Email
 
   confirmDelete: (ev) ->
     [title, message] = if this.$el.siblings('.email-entry').length is 0 # we're the only one
-      ["Are you sure?",
-      "If you remove this address from your account, we will be unable to help you access your account if you can’t sign in."]
+      ['profile-email-confirmDelete-title', 'profile-email-confirmDelete-message-last']
     else
-      [false, "Are you sure you want to remove this email address from your account?"]
+      [false, 'profile-email-confirmDelete-message']
     new OX.ConfirmationPopover(
       title: title
       message: message

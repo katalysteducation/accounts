@@ -3,11 +3,11 @@ class OX.ConfirmationPopover
   constructor: (options) ->
     @options = _.defaults({}, options, {
       html: true,
-      title: 'Are you sure?'
+      title: 'confirmation-popover-title'
       placement: 'right'
-      cancelText: 'Cancel'
-      confirmText: 'OK'
-      message: ''
+      cancelText: 'confirmation-popover-cancelText'
+      confirmText: 'confirmation-popover-confirmText'
+      message: 'confirmation-popover-message'
     })
     # call after defaults are set since generateContent reads @options
     @options.content = $(@generateContent())
@@ -23,10 +23,10 @@ class OX.ConfirmationPopover
   generateContent: ->
     """
       <div>
-        <span class="message">#{@options.message}</span>
+        <span class="message" data-l10n-id="#{@options.message}"></span>
         <p class="button-group" style="margin-top: 10px; text-align: center;">
-          <button type="button" class="btn btn-small confirm-dialog-btn-abort">#{@options.cancelText}</button>
-          <button type="button" class="btn btn-small btn-danger confirm-dialog-btn-confirm">#{@options.confirmText}</button>
+          <button type="button" class="btn btn-small confirm-dialog-btn-abort" data-l10n-id="#{@options.cancelText}"></button>
+          <button type="button" class="btn btn-small btn-danger confirm-dialog-btn-confirm" data-l10n-id="#{@options.confirmText}"></button>
         </p>
       </div>
     """
